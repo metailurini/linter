@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/golangci/golangci-lint/pkg/logutils"
 	"io"
 	"log"
 	"os"
@@ -14,15 +13,16 @@ import (
 	"strings"
 
 	"github.com/alexflint/go-arg"
+	"github.com/golangci/golangci-lint/pkg/logutils"
 	"github.com/golangci/golangci-lint/pkg/printers"
 	"github.com/golangci/golangci-lint/pkg/result"
 )
 
 var args struct {
-	Pwd        string `arg:"--pwd" default:"."                        help:"pwd to run linter"`       // := "/home/shane/workspace/manabie/backend"
-	Cmd        string `arg:"-c"    default:"git diff"                 help:"command to find changes"` // := "git show 7b1e126d54a"
-	JsonFile   string `arg:"-f"    default:"/tmp/golang_ci_lint.json" help:"json file output"`        // := "/tmp/golang_ci_lint.json"
-	InspectDes string `arg:"-d"    default:"./..."                    help:"path to inspect"`         // := "internal/usermgmt/..."
+	Pwd        string `arg:"--pwd" default:"."                        help:"pwd to run linter"`
+	Cmd        string `arg:"-c"    default:"git diff"                 help:"command to find changes"`
+	JsonFile   string `arg:"-f"    default:"/tmp/golang_ci_lint.json" help:"json file output"`
+	InspectDes string `arg:"-d"    default:"./..."                    help:"path to inspect"`
 }
 
 func main() {
